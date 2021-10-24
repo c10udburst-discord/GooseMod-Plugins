@@ -1,0 +1,8 @@
+{
+    "main":"index.js",
+    "version":"1.0",
+    "name":"Send Embeds",
+    "description":"A slash command to send embeds.",
+    "tags": ["Fun"],
+    "authors":["295186738085756929"]
+}
