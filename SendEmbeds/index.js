@@ -1,5 +1,6 @@
 import { commands } from "@goosemod/patcher";
 import { findByProps } from "@goosemod/webpack";
+import { channels } from "@goosemod/webpack/common";
 
 let MessageParser = findByProps("createBotMessage")
 let MessageQueue = findByProps("enqueue")
@@ -23,7 +24,7 @@ export default {
                     return
                 }
                 try {
-                      let channelID = StoreChannels.getChannelId();
+                      let channelID = channels.getChannelId();
                       let msg = MessageParser.createBotMessage(channelID, '');
             
                       MessageQueue.enqueue({
