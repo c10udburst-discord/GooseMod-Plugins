@@ -1,5 +1,5 @@
 import { commands } from "@goosemod/patcher";
-import { findByProps } from "@goosemod/webpackModules";
+import { findByProps } from "@goosemod/webpack";
 
 let MessageParser = findByProps("createBotMessage")
 let MessageQueue = findByProps("enqueue")
