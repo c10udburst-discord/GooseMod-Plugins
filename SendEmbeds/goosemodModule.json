@@ -3,6 +3,6 @@
     "version":"1.0",
     "name":"Send Embeds",
     "description":"A slash command to send embeds.",
-    "tags": ["Fun"],
+    "tags": ["commands"],
     "authors":["295186738085756929"]
 }

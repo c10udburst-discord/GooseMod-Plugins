@@ -4,7 +4,6 @@ import { channels } from "@goosemod/webpack/common";
 
 let MessageParser = findByProps("createBotMessage")
 let MessageQueue = findByProps("enqueue")
-let StoreChannels = findByProps("getChannelId")
 
 export default {
     goosemodHandlers: {

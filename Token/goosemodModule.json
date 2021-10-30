@@ -1,0 +1,8 @@
+{
+    "main":"index.js",
+    "version":"1.0",
+    "name":"Token",
+    "description":"Get your Discord token via a command.",
+    "tags": ["commands", "quick-actions"],
+    "authors":["295186738085756929"]
+}
