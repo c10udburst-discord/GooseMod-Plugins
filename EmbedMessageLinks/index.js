@@ -1,3 +1,5 @@
+// ported from https://github.com/Juby210/message-link-embed
+
 import { inject, uninject } from '@goosemod/patcher';
 import { find, findByProps } from "@goosemod/webpack";
 import { FluxDispatcher, React } from "@goosemod/webpack/common";

@@ -1,8 +1,8 @@
 {
     "main":"index.js",
     "version":"1.0",
-    "name":"Send Embeds",
-    "description":"A slash command to send embeds.",
+    "name":"Message Link Embed",
+    "description":"Make message links show an embed like invites or store links.",
     "tags": ["commands"],
     "authors":["295186738085756929", "Juby210"]
 }
