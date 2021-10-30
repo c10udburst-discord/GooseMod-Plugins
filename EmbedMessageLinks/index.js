@@ -8,6 +8,7 @@ const { getChannel } = findByProps('getChannel', 'getDMFromUserId')
 const { getMessage } = findByProps('getMessages')
 const { getUserAvatarURL } = findByProps('getUserAvatarURL')
 const { get } = findByProps("get","getAPIBaseURL","put","post")
+const MessageContent = find(m => m.type && m.type.displayName == 'MessageContent')
 const User = find(m => m.prototype && m.prototype.tag)
 const Timestamp = find(m => m.prototype && m.prototype.toDate && m.prototype.month)
 
@@ -83,7 +84,6 @@ async function appendEmbed(message) {
 export default {
     goosemodHandlers: {
         onImport: () => {
-            const MessageContent = await find(m => m.type && m.type.displayName == 'MessageContent')
             inject('mlembed-message', MessageContent, 'type', ([{ message }], res) => {
                 if (message.content.match(re)) {
                     const promise = new Promise(() => appendEmbed(message));
