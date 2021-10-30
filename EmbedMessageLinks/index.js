@@ -19,7 +19,7 @@ const cache = {}
 let lastFetch = 0
 
 async function getMsg(channelId, messageId) {
-    let message = getMessage(channelId, messageId) || cache[messageId]
+    let message = cache[messageId] //getMessage(channelId, messageId) || 
     if (!message) {
         if (lastFetch > Date.now() - 2500) await new Promise(r => setTimeout(r, 2500))
         try {
