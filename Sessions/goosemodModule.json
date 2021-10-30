@@ -1,0 +1,8 @@
+{
+    "main":"index.js",
+    "version":"1.0",
+    "name":"Sessions",
+    "description":"Shows you active sessions on your account.",
+    "tags": ["commands", "quick-actions"],
+    "authors":["295186738085756929"]
+}
