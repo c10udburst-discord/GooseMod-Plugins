@@ -19,7 +19,7 @@ const cache = {}
 let lastFetch = 0
 
 async function getMsg(channelId, messageId) {
-    let message = cache[messageId] //getMessage(channelId, messageId) || 
+    let message = getMessage(channelId, messageId) || cache[messageId]
     if (!message) {
         if (lastFetch > Date.now() - 2500) await new Promise(r => setTimeout(r, 2500))
         try {
@@ -34,6 +34,7 @@ async function getMsg(channelId, messageId) {
             lastFetch = Date.now()
             message = data.body.find(m => m.id == messageId)
             if (!message) return
+            if (!message.author) return
             message.author = new User(message.author)
             message.timestamp = new Timestamp(message.timestamp)
         } catch(e) { return }
