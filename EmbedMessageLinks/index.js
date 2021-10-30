@@ -12,7 +12,7 @@ const MessageContent = find(m => m.type && m.type.displayName == 'MessageContent
 const User = find(m => m.prototype && m.prototype.tag)
 const Timestamp = find(m => m.prototype && m.prototype.toDate && m.prototype.month)
 
-//const isMLEmbed = e => typeof e?.author?.name[1]?.props?.__mlembed !== 'undefined'
+const isMLEmbed = e => typeof e?.author?.name[1]?.props?.__mlembed !== 'undefined'
 const re = /https?:\/\/([^\s]*\.)?discord(app)?\.com\/channels\/(\d{17,19}|@me)\/\d{17,19}\/\d{17,19}/g
 
 const cache = {}
@@ -34,8 +34,8 @@ async function getMsg(channelId, messageId) {
             lastFetch = Date.now()
             message = data.body.find(m => m.id == messageId)
             if (!message) return
-            if (!message.author) return
-            message.author = new User(message.author)
+            //if (!message.author) return
+            //message.author = new User(message.author)
             message.timestamp = new Timestamp(message.timestamp)
         } catch(e) { return }
     }
@@ -67,8 +67,8 @@ async function appendEmbed(message) {
             author: {
                 proxy_icon_url: avatarUrl,
                 icon_url: avatarUrl,
-                name: msg.author.toString(), //[ msg.author.tag, React.createElement(() => null, { __mlembed: { ...msg, embedmessage: message } }) ], // hack
-                url: link
+                name: [ msg.author.toString(), React.createElement(() => null, { __mlembed: { ...msg, embedmessage: message } }) ], // hack
+                url: link[0]
             },
             color: msg.colorString ? parseInt(msg.colorString.substr(1), 16) : msg.embeds.find(e => e.color)?.color,
             description: msg.content || msg.embeds.find(e => e.description)?.description || '',
