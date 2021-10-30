@@ -57,25 +57,32 @@ async function appendEmbed(message) {
 
     const embeds = []
     for (const link of message.content.matchAll(re)) {
-        if (!link) continue;
-        const linkArray = link[0].toString().split('/')
+        try {
+            if (!link) continue;
+            const linkArray = link[0].toString().split('/')
 
-        const msg = await getMsg(linkArray[5], linkArray[6])
-        if (!msg) continue;
-        const avatarUrl = getUserAvatarURL(msg.author);
-        embeds.push({
-            author: {
-                proxy_icon_url: avatarUrl,
-                icon_url: avatarUrl,
-                name: [ msg.author.toString(), React.createElement(() => null, { __mlembed: { ...msg, embedmessage: message } }) ], // hack
-                url: link[0]
-            },
-            color: msg.colorString ? parseInt(msg.colorString.substr(1), 16) : msg.embeds.find(e => e.color)?.color,
-            description: msg.content || msg.embeds.find(e => e.description)?.description || '',
-            footer: { text: parse(`<#${msg.channel_id}>`) },
-            timestamp: msg.timestamp,
-            type: 'rich'
-        })
+            const msg = await getMsg(linkArray[5], linkArray[6])
+            if (!msg) continue;
+            const avatarUrl = getUserAvatarURL(msg.author);
+            embeds.push({
+                author: {
+                    proxy_icon_url: avatarUrl,
+                    icon_url: avatarUrl,
+                    name: [ msg.author.toString(), React.createElement(() => null, { __mlembed: { ...msg, embedmessage: message } }) ], // hack
+                    url: link[0]
+                },
+                color: msg.colorString ? parseInt(msg.colorString.substr(1), 16) : msg.embeds.find(e => e.color)?.color,
+                description: msg.content || msg.embeds.find(e => e.description)?.description || '',
+                footer: { text: parse(`<#${msg.channel_id}>`) },
+                timestamp: msg.timestamp,
+                type: 'rich'
+            })
+        } catch (e) {
+            embeds.push({
+                description: `${e}`,
+                type: 'rich'
+            })
+        }
     }
 
     updateMessageEmbeds(message.id, message.channel_id, [ ...embeds, ...message.embeds ])
