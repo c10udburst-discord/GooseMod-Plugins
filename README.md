@@ -1,4 +1,4 @@
-# [GooseMod](https://goosemod.com/) plugins
+# GooseMod plugins
 
 - Sessions: Shows you active sessions on your account
 - Token: Get your Discord token via a command.
