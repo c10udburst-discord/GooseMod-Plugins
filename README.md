@@ -1,5 +1,8 @@
 # [GooseMod](https://goosemod.com/) plugins
 
+- Sessions: Shows you active sessions on your account
+- Token: Get your Discord token via a command.
+
 ## Installation
 - Go to Plugins and press the <kbd>☁</kbd> button. 
 - Paste this url:
